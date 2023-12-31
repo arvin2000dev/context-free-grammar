@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFG</title>
+</head>
+<body>
+
+    <h2>Enter Grammar</h2>
+
+<form id="grammarForm">
+  <div id="inputFields"></div>
+  <button type="button" onclick="addFields()">Add Field</button>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+let count = 0;
+
+function addFields() {
+  let container = document.getElementById('inputFields');
+  let div = document.createElement('div');
+  div.innerHTML = `<label for="key${count}">Key:</label><br>
+                   <input type="text" id="key${count}" name="key${count}"><br>
+                   <label for="value${count}">Value:</label><br>
+                   <input type="text" id="value${count}" name="value${count}"><br>`;
+  container.appendChild(div);
+  count++;
+}
+
+document.getElementById("grammarForm").addEventListener("submit", function(event){
+  event.preventDefault();
+  let grammar = {};
+  for (let i = 0; i < count; i++) {
+    let key = document.getElementById(`key${i}`).value;
+    let value = document.getElementById(`value${i}`).value.split(',');
+    grammar[key] = value;
+  }
+
+  console.log("user grammar: ", firstSetRaHesabKon(grammar));
+});
+
+</script>
+
+
+    <script src="javascript/cfg.js"></script>
+    
+</body>
+</html>

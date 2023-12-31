@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Format</title>
+
+    <style>
+        table, th {
+            border: 1px solid black;
+        }
+        td {
+            border: 1px dashed black;
+            padding: 4px;
+        }
+        th {
+            background: black;
+            color: white;
+        }
+    </style>
+
+<body>
+
+<table id="grammarTable">
+  <tr>
+    <th>Variable</th>
+    <th>Set</th>
+  </tr>
+</table>
+
+<script>
+let grammar1 = {
+    'S': ['aBDh'],
+    'B': ['cC'],
+    'C': ['bC', 'Є'],
+    'D': ['EF'],
+    'E': ['g', 'Є'],
+    'F': ['f', 'Є']
+};
+
+let table = document.getElementById("grammarTable");
+
+for (let variable in grammar1) {
+  let row = table.insertRow(-1);
+  let cell1 = row.insertCell(0);
+  let cell2 = row.insertCell(1);
+  cell1.innerHTML = variable;
+  cell2.innerHTML = grammar1[variable].join(' | ');
+}
+</script>
+
+</body>
+</html>
